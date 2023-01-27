@@ -8,8 +8,11 @@ connectDB();
 
 const app = express()
 
+//Use Body Parser
+app.use(express.json())
+
 //Class Routes
-app.use('/api/class' , require('./routes/class'))
+app.use('/api/institute' , require('./routes/institute'))
 
 
 
