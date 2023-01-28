@@ -32,6 +32,6 @@ const InsituteSchema = new mongoose.Schema({
     default: "No-photo.jpg",
   },
 });
-const Insitute = mongoose.model('Class', InsituteSchema);
+const Insitute = mongoose.model('Institute', InsituteSchema);
 
 module.exports = Insitute

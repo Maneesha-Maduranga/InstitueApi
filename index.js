@@ -1,7 +1,8 @@
 const express = require('express')
 require('dotenv').config()
 const connectDB = require('./config/db')
-
+//Error Handler
+require('express-async-errors');
 //Connect To the Database
 connectDB();
 
