@@ -24,7 +24,9 @@ const getAllInstitute = async (req, res) => {
 const getSingleInstitute = async (req, res) => {
   let id = req.params.id;
 
-  let institue = await Institue.findById(id);
+  let institue = await Institue.findById(id).populate('course')
+  //author.posts[0].title
+  // console.log(institue.course)
 
   if (!institue) {
 

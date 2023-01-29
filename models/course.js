@@ -6,7 +6,7 @@ const CourseSchema = new mongoose.Schema({
     required: true,
     trim: true,
   },
-  descrption: {
+  description: {
     type: String,
     required: true,
     maxlength: [250, "Maximum length shoud be 250"],
@@ -15,16 +15,17 @@ const CourseSchema = new mongoose.Schema({
     type:String,
     required:true
   },
-  Fee:{
+  fee:{
     type:Number,
     required:true
   },
-  Instute:{
+  Institute:{
     type: mongoose.ObjectId,
-    ref: 'Institute'
+    ref: 'Institute',
+    required:true
   }
 
 });
-const Course = mongoose.model('Class', CourseSchema);
+const Course = mongoose.model('Course', CourseSchema);
 
 module.exports = Course

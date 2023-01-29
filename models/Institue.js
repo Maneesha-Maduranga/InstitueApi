@@ -31,7 +31,19 @@ const InsituteSchema = new mongoose.Schema({
     type: String,
     default: "No-photo.jpg",
   },
+},{
+  toJSON: { virtuals: true },
+  toObject: { virtuals: true }
 });
+
+InsituteSchema.virtual('course',{
+  ref:'Course',
+  localField: '_id',
+  foreignField:'Institute',
+  justOne:false
+})
+
+
 const Insitute = mongoose.model('Institute', InsituteSchema);
 
 module.exports = Insitute

@@ -12,10 +12,12 @@ const app = express()
 //Use Body Parser
 app.use(express.json())
 
-//Class Routes
-app.use('/api/institute' , require('./routes/institute'))
-
-
+//Institue Routes
+app.use('/api/institute' , require('./routes/institute'));
+//Course Routes
+app.use('/api/course', require('./routes/course'))
+//User Routes
+app.use('/api/user', require('./routes/auth'))
 
 
 app.listen(5000,() => {
