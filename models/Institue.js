@@ -31,6 +31,11 @@ const InsituteSchema = new mongoose.Schema({
     type: String,
     default: "No-photo.jpg",
   },
+  user:{
+    type: mongoose.ObjectId,
+    ref: 'User',
+    required:true
+  }
 },{
   toJSON: { virtuals: true },
   toObject: { virtuals: true }

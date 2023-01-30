@@ -20,9 +20,12 @@ app.use(cookieParser())
 app.use('/api/institute' , require('./routes/institute'));
 //Course Routes
 app.use('/api/course', require('./routes/course'))
-//User Routes
+//Auth Routes
 app.use('/api/user', require('./routes/auth'))
-
+//Admin Routes
+app.use('/api/admin/user', require('./routes/user'))
+//Review Routes
+app.use('/api/review', require('./routes/review'))
 
 app.listen(5000,() => {
     console.log("Server Is Runinng");

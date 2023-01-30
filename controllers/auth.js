@@ -57,7 +57,14 @@ const loginUser = async (req, res) => {
 //Get User
 const getUser = async(req,res) => {
 
+    let user = req.user
     
+
+    res.status(200).json({
+        sucess:true,
+        data:user
+    })
+
 
 
 

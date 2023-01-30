@@ -1,4 +1,5 @@
 const jwt = require('jsonwebtoken')
+const User = require('../models/User')
 
 
 const protect = async(req,res,next) => {
@@ -18,9 +19,10 @@ const protect = async(req,res,next) => {
     }
 
     try {
+        
         let decode = await jwt.verify(token,process.env.JWT_PRIVATE_KEY)
 
-        req.user = decode.id;
+        req.user = await User.findById(decode.id,'name email role') 
 
         next()
 
@@ -34,6 +36,27 @@ const protect = async(req,res,next) => {
 
 }
 
+//Grant Acess To The Secific User
+
+const grant = (role) => {
+
+    return (req,res,next) => {
+
+        if(role.includes(req.user.role)){
+
+            next()
+            
+        }
+        else{
+           return res.status(401).json({
+                sucess:false,
+                err:"You dont Have Permission"
+            })
+        }
+    }
+}
+
 module.exports = {
-    protect
+    protect,
+    grant
 }
