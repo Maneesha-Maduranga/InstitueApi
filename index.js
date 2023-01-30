@@ -1,6 +1,8 @@
 const express = require('express')
+const cookieParser = require('cookie-parser')
 require('dotenv').config()
 const connectDB = require('./config/db')
+
 //Error Handler
 require('express-async-errors');
 //Connect To the Database
@@ -11,6 +13,8 @@ const app = express()
 
 //Use Body Parser
 app.use(express.json())
+//Cookie Parser
+app.use(cookieParser())
 
 //Institue Routes
 app.use('/api/institute' , require('./routes/institute'));

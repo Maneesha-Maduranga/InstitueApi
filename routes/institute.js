@@ -1,5 +1,5 @@
 const  { getAllInstitute,getSingleInstitute,postInstitute,deleteInstitute,updateInstitute} = require('../controllers/institute')
-
+const {protect} = require('../middleware/authmiddleware')
 //Class Routes for get,post,update,delete
 
 const express = require('express');
@@ -18,16 +18,16 @@ router.use('/:instituteId/course', course)
 router.get('/', getAllInstitute);
 
 //Private
-router.get('/:id', getSingleInstitute);
+router.get('/:id', protect,  getSingleInstitute);
 
 //Private
-router.post('/', postInstitute);
+router.post('/',protect ,postInstitute);
 
 //Private
-router.patch('/:id', updateInstitute);
+router.patch('/:id',protect ,updateInstitute);
 
 //Private
-router.delete('/:id', deleteInstitute);
+router.delete('/:id',protect ,deleteInstitute);
 
 
 module.exports = router;
