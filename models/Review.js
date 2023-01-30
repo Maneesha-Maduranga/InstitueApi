@@ -16,9 +16,9 @@ const ReviewSchema = new mongoose.Schema({
     ref: 'Institute',
     required:true
   },
-  Course:{
+  User:{
     type: mongoose.Types.ObjectId,
-    ref: 'Course',
+    ref: 'User',
     required:true
   },
 

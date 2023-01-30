@@ -1,4 +1,5 @@
 const Review = require("../models/Review");
+const Institute = require("../models/Institue")
 
 const getallReview = async (req, res) => {
     
@@ -21,6 +22,36 @@ const getallReview = async (req, res) => {
   }
 };
 
+
+const createReview = async(req,res) => {
+
+   req.body.Institute = req.params.instituteId
+   req.body.User = req.user._id
+
+   let institute = await Institute.findById(req.params.instituteId)
+
+   if(!institute){
+     return res.status(400).json({
+        sucess:false,
+        err:"No Bootcamp With given Id"
+     })
+   }
+
+   let review = await Review.create(req.body)
+
+   res.status(201).json({
+    sucess:true,
+    data:review
+   })
+
+
+
+
+
+
+}
+
 module.exports = {
   getallReview,
+  createReview
 };
