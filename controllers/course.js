@@ -1,5 +1,5 @@
 const Institue = require('../models/Institue')
-const Course = require('../models/course')
+const {Course} = require('../models/course')
 
 const addCourse = async (req, res) => {
   

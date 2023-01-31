@@ -70,8 +70,22 @@ const getUser = async(req,res) => {
 
 }
 
+const logout = async(req,res) => {
+
+  
+
+  res.status(200).cookie("Token",'',{maxAge:1}).json({
+    sucess:true,
+    data:{}
+  })
+
+
+}
+
+
 module.exports = {
   registerUser,
   loginUser,
-  getUser
+  getUser,
+  logout
 };

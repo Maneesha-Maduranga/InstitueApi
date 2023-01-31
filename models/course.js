@@ -1,4 +1,21 @@
 const mongoose = require("mongoose");
+const Joi = require('joi');
+
+
+
+const validate = (title,description,duration,fee) => {
+
+  const schema = Joi.object({
+    title: Joi.string().required().trim(),
+    description:Joi.string().required().max(250),
+    duration:Joi.string().required(),
+    fee:Joi.number()
+  });
+
+  return  schema.validate({ title,description,duration,fee });
+}
+
+
 
 const CourseSchema = new mongoose.Schema({
  title: {
@@ -28,4 +45,7 @@ const CourseSchema = new mongoose.Schema({
 });
 const Course = mongoose.model('Course', CourseSchema);
 
-module.exports = Course
+module.exports = {
+  Course,
+  validate
+}
